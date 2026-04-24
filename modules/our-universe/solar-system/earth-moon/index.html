@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wonder Lab: Earth and Moon</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="orbit-lab" aria-labelledby="app-title">
+        <div class="top-bar">
+          <div>
+            <p class="eyebrow">Wonder Lab</p>
+            <h1 id="app-title">Earth and Moon</h1>
+          </div>
+          <div class="top-actions">
+            <a class="home-link" href="../../../../index.html">Contents</a>
+            <button class="icon-button" id="pauseButton" type="button" aria-label="Pause orbit">
+              <span id="pauseIcon">II</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="scene-wrap">
+          <canvas id="spaceCanvas" width="1200" height="900" aria-label="Animated Earth and Moon orbit"></canvas>
+          <button class="label earth-label" type="button" aria-label="Introduce Earth">Earth</button>
+          <button class="label moon-label" id="moonLabel" type="button" aria-label="Introduce Moon">Moon</button>
+          <button class="hotspot barycenter-hotspot is-hidden" id="barycenterHotspot" type="button" aria-label="Explain barycenter"></button>
+          <button class="hotspot tidal-hotspot is-hidden" id="tidalHotspot" type="button" aria-label="Explain tidal locking"></button>
+          <aside class="info-panel is-hidden" id="infoPanel" aria-live="polite" aria-label="Dot explanation">
+            <button class="info-close" id="infoClose" type="button" aria-label="Close explanation">×</button>
+            <p class="info-kicker" id="infoKicker"></p>
+            <h2 id="infoTitle"></h2>
+            <p id="infoBody"></p>
+          </aside>
+        </div>
+
+        <div class="control-strip" aria-label="Orbit controls">
+          <button class="control-button" type="button" data-speed="0.04">Slow</button>
+          <button class="control-button is-active" type="button" data-speed="0.1">Normal</button>
+          <button class="control-button" type="button" data-speed="0.25">Fast</button>
+        </div>
+
+        <div class="scale-strip" aria-label="Scale controls">
+          <button class="scale-button is-active" type="button" data-scale="diagram">Diagram scale</button>
+          <button class="scale-button" type="button" data-scale="true">True scale</button>
+        </div>
+      </section>
+
+      <aside class="mission-panel" aria-label="Discovery cards">
+        <div class="progress-box">
+          <div>
+            <p class="eyebrow">Mission</p>
+            <h2>Follow the Moon</h2>
+          </div>
+          <div class="badge" id="badgeCount">0/8</div>
+        </div>
+
+        <div class="card-stack" id="cardStack">
+          <article class="fact-card is-open" data-card="0">
+            <button class="card-title" type="button">
+              <span>1</span>
+              What is orbiting?
+            </button>
+            <p>The Moon is moving around Earth. One full trip is called an orbit.</p>
+          </article>
+
+          <article class="fact-card" data-card="1">
+            <button class="card-title" type="button">
+              <span>2</span>
+              Why does it stay nearby?
+            </button>
+            <p>Earth's gravity pulls on the Moon. The Moon keeps moving forward, so it goes around instead of falling straight down.</p>
+          </article>
+
+          <article class="fact-card" data-card="2">
+            <button class="card-title" type="button">
+              <span>3</span>
+              How long is one trip?
+            </button>
+            <p>The real Moon takes about 27 days to go around Earth once. This lab speeds it up so we can watch it.</p>
+          </article>
+
+          <article class="fact-card" data-card="3">
+            <button class="card-title" type="button">
+              <span>4</span>
+              Does Earth move too?
+            </button>
+            <p>Yes. Earth wobbles a tiny bit because the Moon pulls back. Space is full of teamwork.</p>
+          </article>
+
+          <article class="fact-card" data-card="4">
+            <button class="card-title" type="button">
+              <span>5</span>
+              Same face, all the time?
+            </button>
+            <p>This is called tidal locking. The Moon spins once during each orbit, so the same near side keeps facing Earth.</p>
+          </article>
+
+          <article class="fact-card" data-card="5">
+            <button class="card-title" type="button">
+              <span>6</span>
+              What does Earth orbit?
+            </button>
+            <p>Earth and the Moon both move around their shared balance point. That point is called the barycenter.</p>
+          </article>
+
+          <article class="fact-card" data-card="6">
+            <button class="card-title" type="button">
+              <span>7</span>
+              Why does Earth spin faster?
+            </button>
+            <p>Earth spins about 28 times during one Moon orbit. Use Slow, Normal, and Fast to see the spin and orbit change together.</p>
+          </article>
+
+          <article class="fact-card" data-card="7">
+            <button class="card-title" type="button">
+              <span>8</span>
+              Why are they so tiny?
+            </button>
+            <p>This view uses real size and distance proportions. Space is mostly empty, so Earth and the Moon look much smaller than in most diagrams.</p>
+          </article>
+        </div>
+
+        <div class="mission-log">
+          <label for="missionAnswer">Mission log</label>
+          <textarea id="missionAnswer" rows="4" placeholder="I noticed..."></textarea>
+          <button id="saveLog" type="button">Save thought</button>
+          <p class="saved-note" id="savedNote" role="status"></p>
+        </div>
+      </aside>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
