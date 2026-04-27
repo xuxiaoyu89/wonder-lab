@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wonder Lab: Sun and Earth 3D</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="space-stage" aria-labelledby="app-title">
+        <div class="top-bar">
+          <div>
+            <p class="eyebrow">Three.js Lab</p>
+            <h1 id="app-title">Sun and Earth 3D</h1>
+          </div>
+          <div class="top-actions">
+            <a class="home-link" href="../../../../index.html">Contents</a>
+            <button class="icon-button" id="pauseButton" type="button" aria-label="Pause orbit">
+              <span id="pauseIcon">II</span>
+            </button>
+          </div>
+        </div>
+
+        <canvas id="solarCanvas" aria-label="3D Sun orbited by Earth"></canvas>
+
+        <div class="control-strip" aria-label="Orbit controls">
+          <button class="control-button" type="button" data-speed="0.2">Slow</button>
+          <button class="control-button is-active" type="button" data-speed="0.55">Normal</button>
+          <button class="control-button" type="button" data-speed="1.1">Fast</button>
+        </div>
+      </section>
+
+      <aside class="side-panel" aria-label="Model notes">
+        <p class="eyebrow">First 3D step</p>
+        <h2>A tiny solar system</h2>
+        <p>
+          This page keeps the older 2D Earth-Moon room and starts a separate Three.js model. Drag the scene to orbit the camera, scroll to zoom, and watch Earth travel around the Sun.
+        </p>
+
+        <div class="stat-grid" aria-label="Scene objects">
+          <div>
+            <span class="swatch sun"></span>
+            <strong>Sun</strong>
+            <small>Glowing center sphere and point light</small>
+          </div>
+          <div>
+            <span class="swatch earth"></span>
+            <strong>Earth</strong>
+            <small>Blue sphere with a small orbital path</small>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.164.1/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.164.1/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module" src="script.js?v=15"></script>
+  </body>
+</html>
