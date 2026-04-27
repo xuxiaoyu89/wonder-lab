@@ -24,10 +24,29 @@
 
         <canvas id="solarCanvas" aria-label="3D Sun orbited by Earth"></canvas>
 
+        <div class="focus-strip" aria-label="Focus controls">
+          <button class="focus-button" type="button" data-focus-target="Sun">Sun</button>
+          <button class="focus-button" type="button" data-focus-target="Mercury">Mercury</button>
+          <button class="focus-button" type="button" data-focus-target="Venus">Venus</button>
+          <button class="focus-button" type="button" data-focus-target="Earth">Earth</button>
+          <button class="focus-button" type="button" data-focus-target="Moon">Moon</button>
+          <button class="focus-button" type="button" data-focus-target="Mars">Mars</button>
+          <button class="focus-button" type="button" data-focus-target="Jupiter">Jupiter</button>
+          <button class="focus-button" type="button" data-focus-target="Saturn">Saturn</button>
+          <button class="focus-button" type="button" data-focus-target="Uranus">Uranus</button>
+          <button class="focus-button" type="button" data-focus-target="Neptune">Neptune</button>
+          <button class="focus-button" type="button" data-focus-target="Pluto">Pluto</button>
+        </div>
+
         <div class="control-strip" aria-label="Orbit controls">
           <button class="control-button" type="button" data-speed="0.2">Slow</button>
           <button class="control-button is-active" type="button" data-speed="0.55">Normal</button>
           <button class="control-button" type="button" data-speed="1.1">Fast</button>
+        </div>
+
+        <div class="scale-strip" aria-label="Scale controls">
+          <button class="scale-button is-active" type="button" data-scale-mode="diagram">Diagram</button>
+          <button class="scale-button" type="button" data-scale-mode="real">Real scale</button>
         </div>
       </section>
 
@@ -61,6 +80,6 @@
         }
       }
     </script>
-    <script type="module" src="script.js?v=15"></script>
+    <script type="module" src="script.js?v=24"></script>
   </body>
 </html>

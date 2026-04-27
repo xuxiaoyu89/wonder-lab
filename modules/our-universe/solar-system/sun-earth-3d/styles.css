@@ -104,7 +104,9 @@ h2 {
 
 .home-link,
 .icon-button,
-.control-button {
+.control-button,
+.scale-button,
+.focus-button {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.12);
@@ -150,13 +152,52 @@ h2 {
   max-width: 520px;
 }
 
-.control-button {
+.focus-strip {
+  position: absolute;
+  z-index: 2;
+  top: 132px;
+  left: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: min(560px, calc(100% - 48px));
+  pointer-events: auto;
+}
+
+.scale-strip {
+  position: absolute;
+  z-index: 2;
+  left: 24px;
+  right: 24px;
+  bottom: 88px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  max-width: 360px;
+}
+
+.control-button,
+.scale-button {
   min-height: 52px;
 }
 
+.focus-button {
+  min-height: 34px;
+  padding: 0 10px;
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.09);
+  font-size: 0.82rem;
+}
+
 .control-button.is-active,
+.scale-button.is-active,
+.focus-button.is-active,
 .control-button:hover,
 .control-button:focus-visible,
+.scale-button:hover,
+.scale-button:focus-visible,
+.focus-button:hover,
+.focus-button:focus-visible,
 .home-link:hover,
 .home-link:focus-visible,
 .icon-button:hover,
@@ -264,6 +305,18 @@ h2 {
     bottom: 16px;
   }
 
+  .focus-strip {
+    top: 118px;
+    left: 16px;
+    width: min(100% - 32px, 560px);
+  }
+
+  .scale-strip {
+    left: 16px;
+    right: 16px;
+    bottom: 80px;
+  }
+
   .side-panel {
     min-height: auto;
     padding: 22px 16px 28px;
@@ -281,5 +334,9 @@ h2 {
 
   h1 {
     max-width: 8ch;
+  }
+
+  .focus-strip {
+    top: 184px;
   }
 }
