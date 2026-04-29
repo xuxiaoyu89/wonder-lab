@@ -48,28 +48,16 @@
           <button class="scale-button is-active" type="button" data-scale-mode="diagram">Diagram</button>
           <button class="scale-button" type="button" data-scale-mode="real">Real scale</button>
         </div>
+
+        <aside class="info-panel is-hidden" id="infoPanel" aria-live="polite" aria-label="Object facts">
+          <button class="info-close" id="infoClose" type="button" aria-label="Close facts">×</button>
+          <p class="info-kicker" id="infoKicker"></p>
+          <h2 id="infoTitle"></h2>
+          <img class="info-image is-hidden" id="infoImage" alt="">
+          <p id="infoIntro"></p>
+          <ul id="infoFacts"></ul>
+        </aside>
       </section>
-
-      <aside class="side-panel" aria-label="Model notes">
-        <p class="eyebrow">First 3D step</p>
-        <h2>A tiny solar system</h2>
-        <p>
-          This page keeps the older 2D Earth-Moon room and starts a separate Three.js model. Drag the scene to orbit the camera, scroll to zoom, and watch Earth travel around the Sun.
-        </p>
-
-        <div class="stat-grid" aria-label="Scene objects">
-          <div>
-            <span class="swatch sun"></span>
-            <strong>Sun</strong>
-            <small>Glowing center sphere and point light</small>
-          </div>
-          <div>
-            <span class="swatch earth"></span>
-            <strong>Earth</strong>
-            <small>Blue sphere with a small orbital path</small>
-          </div>
-        </div>
-      </aside>
     </main>
 
     <script type="importmap">
@@ -80,6 +68,6 @@
         }
       }
     </script>
-    <script type="module" src="script.js?v=24"></script>
+    <script type="module" src="script.js?v=30"></script>
   </body>
 </html>

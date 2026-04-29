@@ -123,6 +123,11 @@ h2 {
   font-weight: 900;
 }
 
+.module-list {
+  display: grid;
+  gap: 10px;
+}
+
 .module-link {
   display: grid;
   gap: 6px;

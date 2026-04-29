@@ -7,6 +7,13 @@ const pauseIcon = document.querySelector("#pauseIcon");
 const speedButtons = document.querySelectorAll("[data-speed]");
 const scaleButtons = document.querySelectorAll("[data-scale-mode]");
 const focusButtons = document.querySelectorAll("[data-focus-target]");
+const infoPanel = document.querySelector("#infoPanel");
+const infoClose = document.querySelector("#infoClose");
+const infoKicker = document.querySelector("#infoKicker");
+const infoTitle = document.querySelector("#infoTitle");
+const infoImage = document.querySelector("#infoImage");
+const infoIntro = document.querySelector("#infoIntro");
+const infoFacts = document.querySelector("#infoFacts");
 
 const renderer = new THREE.WebGLRenderer({
   canvas,
@@ -51,11 +58,80 @@ const moonBaseRadius = 0.2;
 const sunBaseRadius = 2.2;
 let currentEarthOrbitRadius = earthOrbitRadius;
 let currentMoonOrbitRadius = moonOrbitRadius;
+const assetVersion = 2;
 const earthSelfRotationSpeed = 3.85;
 const earthRotationsPerOrbit = 365.25;
 const moonOrbitDays = 27.32;
 const moonOrbitsPerEarthOrbit = earthRotationsPerOrbit / moonOrbitDays;
 const moonOrbitTilt = THREE.MathUtils.degToRad(5.1);
+const bodyInfo = {
+  Sun: {
+    kicker: "Star",
+    image: "assets/sun.png",
+    intro: "The Sun is the star at the center of our solar system. Its gravity keeps the planets, dwarf planets, moons, asteroids, and comets traveling around it.",
+    facts: ["It contains more than 99% of the solar system's mass.", "Light from the Sun takes about 8 minutes to reach Earth.", "The Sun is mostly hydrogen and helium."],
+  },
+  Mercury: {
+    kicker: "Innermost planet",
+    image: "assets/mercury.png",
+    intro: "Mercury is the closest planet to the Sun and the smallest of the eight major planets.",
+    facts: ["A year on Mercury lasts only 88 Earth days.", "It has almost no atmosphere to hold heat.", "Its surface is covered with craters, a bit like the Moon."],
+  },
+  Venus: {
+    kicker: "Cloudy world",
+    image: "assets/venus.png",
+    intro: "Venus is almost Earth's size, but it is wrapped in a thick, hot atmosphere.",
+    facts: ["It is the hottest planet in the solar system.", "Venus spins backward compared with most planets.", "Its clouds are made with sulfuric acid droplets."],
+  },
+  Earth: {
+    kicker: "Home planet",
+    image: "assets/earth.png",
+    intro: "Earth is the ocean-covered rocky planet where we live, with air, water, land, and life.",
+    facts: ["Earth's axis tilt gives us seasons.", "About 71% of the surface is covered by water.", "Earth takes about 365.25 days to orbit the Sun."],
+  },
+  Moon: {
+    kicker: "Earth's moon",
+    image: "assets/moon.png",
+    intro: "The Moon is Earth's natural satellite. It orbits Earth and helps shape ocean tides.",
+    facts: ["The same side of the Moon always faces Earth.", "It takes about 27.3 days to orbit Earth.", "Moon footprints can last a very long time because there is no wind."],
+  },
+  Mars: {
+    kicker: "Red planet",
+    image: "assets/mars.png",
+    intro: "Mars is a cold rocky planet with rusty dust, giant volcanoes, and signs that water once flowed there.",
+    facts: ["Mars has the tallest volcano known in the solar system.", "A Martian day is only a little longer than an Earth day.", "Its two small moons are Phobos and Deimos."],
+  },
+  Jupiter: {
+    kicker: "Gas giant",
+    image: "assets/jupiter.png",
+    intro: "Jupiter is the largest planet, a huge world of gas with powerful storms and many moons.",
+    facts: ["The Great Red Spot is a storm larger than Earth.", "Jupiter spins very fast, once in about 10 hours.", "Its gravity helps shape many small-body orbits in the solar system."],
+  },
+  Saturn: {
+    kicker: "Ringed planet",
+    image: "assets/saturn.png",
+    intro: "Saturn is a gas giant famous for its bright ring system made of ice and rock pieces.",
+    facts: ["Saturn is less dense than water.", "Its rings are wide but very thin.", "Titan, Saturn's largest moon, has a thick atmosphere."],
+  },
+  Uranus: {
+    kicker: "Tilted ice giant",
+    image: "assets/uranus.png",
+    intro: "Uranus is a pale blue-green ice giant that rotates on its side compared with the other planets.",
+    facts: ["Its axis is tilted about 98 degrees.", "Methane in the atmosphere helps give it its blue-green color.", "It has faint rings."],
+  },
+  Neptune: {
+    kicker: "Windy ice giant",
+    image: "assets/neptune.png",
+    intro: "Neptune is a deep-blue ice giant and the farthest major planet from the Sun.",
+    facts: ["Neptune has some of the fastest winds measured in the solar system.", "It takes about 165 Earth years to orbit the Sun.", "Its largest moon, Triton, orbits backward."],
+  },
+  Pluto: {
+    kicker: "Dwarf planet",
+    image: "assets/pluto.png",
+    intro: "Pluto is a small icy world in the Kuiper Belt, beyond Neptune.",
+    facts: ["Pluto has a heart-shaped bright region called Tombaugh Regio.", "Its orbit is more stretched out than the planets' orbits.", "Its largest moon, Charon, is so big that they orbit a shared point in space."],
+  },
+};
 const planetConfigs = [
   {
     name: "Mercury",
@@ -555,6 +631,36 @@ function focusObject(object, shouldFrame = false) {
   }
 }
 
+function showInfo(name) {
+  const info = bodyInfo[name];
+  if (!info) {
+    return;
+  }
+
+  infoKicker.textContent = info.kicker;
+  infoTitle.textContent = name;
+  if (info.image) {
+    infoImage.src = `${info.image}?v=${assetVersion}`;
+    infoImage.alt = `${name} image`;
+    infoImage.classList.remove("is-hidden");
+  } else {
+    infoImage.removeAttribute("src");
+    infoImage.alt = "";
+    infoImage.classList.add("is-hidden");
+  }
+  infoIntro.textContent = info.intro;
+  infoFacts.replaceChildren(...info.facts.map((fact) => {
+    const item = document.createElement("li");
+    item.textContent = fact;
+    return item;
+  }));
+  infoPanel.classList.remove("is-hidden");
+}
+
+function hideInfo() {
+  infoPanel.classList.add("is-hidden");
+}
+
 function updateFocusedTarget() {
   if (!focusedObject) {
     return;
@@ -611,6 +717,7 @@ function focusByName(name) {
   const target = focusTargets.get(name);
   if (target) {
     focusObject(target, true);
+    showInfo(name);
   }
 }
 
@@ -733,6 +840,8 @@ focusButtons.forEach((button) => {
     focusByName(button.dataset.focusTarget);
   });
 });
+
+infoClose.addEventListener("click", hideInfo);
 
 canvas.addEventListener("pointerdown", (event) => {
   pointerDown.set(event.clientX, event.clientY);

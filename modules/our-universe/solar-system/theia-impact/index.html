@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wonder Lab: Theia Impact</title>
+    <link rel="stylesheet" href="styles.css?v=2">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="impact-lab" aria-labelledby="app-title">
+        <div class="top-bar">
+          <div>
+            <p class="eyebrow">Solar System Origin Story</p>
+            <h1 id="app-title">Theia Impact</h1>
+          </div>
+          <div class="top-actions">
+            <a class="home-link" href="../../../../index.html">Contents</a>
+            <a class="home-link" href="https://www.youtube.com/watch?v=03c8YPRiBPU" target="_blank" rel="noreferrer">YouTube</a>
+          </div>
+        </div>
+
+        <div class="video-stage" aria-label="Theia impact video lesson">
+          <div class="video-frame">
+            <iframe
+              id="moonOriginVideo"
+              src="https://www.youtube.com/embed/03c8YPRiBPU?autoplay=1&mute=1&loop=1&playlist=03c8YPRiBPU&playsinline=1&rel=0&enablejsapi=1&origin=http%3A%2F%2F127.0.0.1%3A8765"
+              title="YouTube video about the Theia impact and Moon formation"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <p class="video-caption">Watch for the big idea: a Mars-sized world may have struck young Earth, sending hot rock into orbit that later gathered into the Moon.</p>
+        </div>
+      </section>
+
+      <aside class="mission-panel" aria-label="Discovery cards">
+        <div class="progress-box">
+          <div>
+            <p class="eyebrow">Mission</p>
+            <h2>Watch a Moon Be Born</h2>
+          </div>
+          <div class="badge" id="badgeCount">0/6</div>
+        </div>
+
+        <div class="card-stack" id="cardStack">
+          <article class="fact-card is-open" data-card="0">
+            <button class="card-title" type="button">
+              <span>1</span>
+              What is Theia?
+            </button>
+            <p>Theia is the name scientists often use for a Mars-sized world that may have hit early Earth about 4.5 billion years ago.</p>
+          </article>
+
+          <article class="fact-card" data-card="1">
+            <button class="card-title" type="button">
+              <span>2</span>
+              Why an angled crash?
+            </button>
+            <p>A glancing impact can throw rock into orbit instead of sending everything straight into Earth.</p>
+          </article>
+
+          <article class="fact-card" data-card="2">
+            <button class="card-title" type="button">
+              <span>3</span>
+              What should Alan watch for?
+            </button>
+            <p>Look for the impact angle, the cloud of debris, and how orbiting material can gather into one larger body.</p>
+          </article>
+
+          <article class="fact-card" data-card="3">
+            <button class="card-title" type="button">
+              <span>4</span>
+              How does rock become a Moon?
+            </button>
+            <p>Gravity pulls nearby pieces together. Many small clumps can merge into one larger round world.</p>
+          </article>
+
+          <article class="fact-card" data-card="4">
+            <button class="card-title" type="button">
+              <span>5</span>
+              What clue do rocks give?
+            </button>
+            <p>Moon rocks are very similar to Earth rocks, which is one reason the giant impact idea is so powerful.</p>
+          </article>
+
+          <article class="fact-card" data-card="5">
+            <button class="card-title" type="button">
+              <span>6</span>
+              Is every detail settled?
+            </button>
+            <p>The giant impact is the leading idea, but scientists still study the details with computer models, Moon rocks, and measurements of Earth.</p>
+          </article>
+        </div>
+
+        <div class="mission-log">
+          <label for="missionAnswer">Mission log</label>
+          <textarea id="missionAnswer" rows="4" placeholder="I think the Moon formed when..."></textarea>
+          <button id="saveLog" type="button">Save thought</button>
+          <p class="saved-note" id="savedNote" role="status"></p>
+        </div>
+      </aside>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
