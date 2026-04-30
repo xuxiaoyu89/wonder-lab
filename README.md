@@ -11,6 +11,8 @@ An interactive learning library for Alan and Gloria.
     - Sun and Earth 3D
   - Stars and Deep Space
 - Physics Playground
+  - Forces and Motion
+    - Gravity Jump
 - Life Lab
 - Math Arcade
 - History Time Machine
@@ -23,3 +25,4 @@ The first working modules are:
 - `modules/our-universe/solar-system/earth-moon/`
 - `modules/our-universe/solar-system/theia-impact/`
 - `modules/our-universe/solar-system/sun-earth-3d/`
+- `modules/physics-playground/gravity-jump/`

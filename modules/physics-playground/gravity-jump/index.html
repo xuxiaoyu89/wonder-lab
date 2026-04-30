@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wonder Lab: Gravity Jump</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="jump-lab" aria-labelledby="app-title">
+        <div class="top-bar">
+          <div>
+            <p class="eyebrow">Physics Playground</p>
+            <h1 id="app-title">Gravity Jump</h1>
+          </div>
+          <div class="top-actions">
+            <a class="home-link" href="../../../index.html">Contents</a>
+            <button class="icon-button" id="pauseButton" type="button" aria-label="Pause simulation">
+              <span id="pauseIcon">II</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="scene-wrap">
+          <canvas id="jumpCanvas" width="1200" height="800" aria-label="Astronaut jumping forward under Earth gravity"></canvas>
+          <div class="readout" aria-label="Jump readout">
+            <div>
+              <span class="readout-label">World</span>
+              <strong id="planetName">Earth</strong>
+            </div>
+            <div>
+              <span class="readout-label">Gravity</span>
+              <strong id="gravityValue">9.81 m/s²</strong>
+            </div>
+            <div>
+              <span class="readout-label">Air time</span>
+              <strong id="airTime">0.0 s</strong>
+            </div>
+            <div>
+              <span class="readout-label">Distance</span>
+              <strong id="distanceValue">0.0 ft</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="world-strip" aria-label="World gravity controls">
+          <button class="world-button" type="button" data-planet="mercury">Mercury</button>
+          <button class="world-button" type="button" data-planet="venus">Venus</button>
+          <button class="world-button is-active" type="button" data-planet="earth">Earth</button>
+          <button class="world-button" type="button" data-planet="moon">Moon</button>
+          <button class="world-button" type="button" data-planet="mars">Mars</button>
+          <button class="world-button" type="button" data-planet="jupiter">Jupiter</button>
+          <button class="world-button" type="button" data-planet="saturn">Saturn</button>
+          <button class="world-button" type="button" data-planet="uranus">Uranus</button>
+          <button class="world-button" type="button" data-planet="neptune">Neptune</button>
+        </div>
+      </section>
+
+      <aside class="mission-panel" aria-label="Discovery cards">
+        <div class="progress-box">
+          <div>
+            <p class="eyebrow">Mission</p>
+            <h2>Gravity Detective</h2>
+          </div>
+          <div class="badge" id="badgeCount">0/5</div>
+        </div>
+
+        <div class="card-stack" id="cardStack">
+          <article class="fact-card is-open" data-card="0">
+            <button class="card-title" type="button">
+              <span>1</span>
+              What is gravity doing?
+            </button>
+            <p>Gravity pulls the astronaut down toward Earth. The astronaut still moves forward, but gravity bends the jump into an arc.</p>
+          </article>
+
+          <article class="fact-card" data-card="1">
+            <button class="card-title" type="button">
+              <span>2</span>
+              Why does the astronaut land?
+            </button>
+            <p>The jump starts with an upward push. Earth keeps pulling down, so the upward motion slows, stops, and turns into falling.</p>
+          </article>
+
+          <article class="fact-card" data-card="2">
+            <button class="card-title" type="button">
+              <span>3</span>
+              What keeps moving forward?
+            </button>
+            <p>The astronaut keeps gliding forward because of the push from the jump. Gravity mostly changes the up-and-down motion.</p>
+          </article>
+
+          <article class="fact-card" data-card="3">
+            <button class="card-title" type="button">
+              <span>4</span>
+              Is gravity the same everywhere?
+            </button>
+            <p>No. Every world has its own gravity. Try the Moon for a floaty jump, then Jupiter for a heavy jump.</p>
+          </article>
+
+          <article class="fact-card" data-card="4">
+            <button class="card-title" type="button">
+              <span>5</span>
+              What should Alan try?
+            </button>
+            <p>Pick a world, press Jump, then watch the timer and distance. The same astronaut push changes because gravity changes.</p>
+          </article>
+        </div>
+
+        <div class="mission-log">
+          <label for="missionAnswer">Mission log</label>
+          <textarea id="missionAnswer" rows="4" placeholder="On Earth, the astronaut..."></textarea>
+          <button id="saveLog" type="button">Save thought</button>
+          <p class="saved-note" id="savedNote" role="status"></p>
+        </div>
+      </aside>
+    </main>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.164.1/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.164.1/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
